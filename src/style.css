@@ -6,6 +6,94 @@ body {
   color: #333;
 }
 
+.nav-tabs {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 3rem 0;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: max-height 0.3s ease;
+}
+
+/* Hamburger styles */
+.nav-toggle {
+  display: none;
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1001;
+}
+.nav-toggle span {
+  display: block;
+  width: 2rem;
+  height: 0.3rem;
+  margin: 0.3rem 0;
+  background: #333;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+@media (max-width: 700px) {
+  .nav-tabs {
+    flex-direction: column;
+    align-items: flex-start;
+    max-height: 0;
+    overflow: hidden;
+    margin: 0 0 2rem 0;
+    width: 100%;
+    box-shadow: none;
+    border-radius: 0;
+    background: #fff;
+    position: absolute;
+    top: 4.5rem;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+  .nav-tabs.open {
+    max-height: 500px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .nav-tabs li {
+    margin: 0.5rem 1rem;
+    width: 100%;
+  }
+  .nav-tabs a {
+    padding: 1rem 1.5rem;
+    width: 100%;
+    text-align: left;
+  }
+  .nav-toggle {
+    display: flex;
+  }
+}
+}
+.nav-tabs li {
+  margin: 0 1.5rem;
+}
+.nav-tabs a {
+  display: block;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-tabs a:hover {
+  background: #007bff;
+  color: #fff;
+}
+
 h1 {
   color: green;
 }
