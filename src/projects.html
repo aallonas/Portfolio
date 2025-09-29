@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Homepage</title>
+  <title>Projects</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -33,14 +33,13 @@
         navTabs.classList.toggle('open');
       }
     });
-    // Optional: close menu on link click (mobile UX)
     navTabs.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         if (window.innerWidth <= 700) navTabs.classList.remove('open');
       });
     });
   </script>
-    <h1>Homepage</h1>
-  <p>This is the Homepage</p>
+  <h1>Projects</h1>
+  <p>This is the Projects page.</p>
 </body>
 </html>
