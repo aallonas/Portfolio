@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Homepage</title>
+  <title>Experience</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -23,29 +23,8 @@
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
-  <script>
-    const navToggle = document.getElementById('navToggle');
-    const navTabs = document.getElementById('navTabs');
-    navToggle.addEventListener('click', () => {
-      navTabs.classList.toggle('open');
-    });
-    navToggle.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        navTabs.classList.toggle('open');
-      }
-    });
-    // Optional: close menu on link click (mobile UX)
-    navTabs.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 700) navTabs.classList.remove('open');
-      });
-    });
-  </script>
-  <h1>Homepage</h1>
-  <div class="construction-notice" style="color: #b85c00; font-weight: bold;font-size: 1.2rem;margin: 1.5rem 0;">
-  <p>🚧 This Website is under construction, contents are missing. 🚧</p>
-  </div>
-  <p>This is the Homepage</p>
+  <h1>Experience</h1>
+  <p>This is the Experience page.</p>
 </body>
 <footer>
   <p>© 2025 Alexandre Allonas &mdash; Mechatronics Engineering Student @ INSA Strasbourg</p>
