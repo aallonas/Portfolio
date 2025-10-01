@@ -1,3 +1,23 @@
+/* Global box-sizing reset */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+@media (max-width: 700px) {
+  html, body {
+    overflow-x: hidden;
+  }
+  /* ensure contact sections never exceed viewport width */
+  .contact-page .contact-sections,
+  .contact-page .contact-sections * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
+
 /* Footer icon/text responsive styles */
 .footer-link-text {
   display: inline;
@@ -26,14 +46,14 @@ footer {
   margin-top: 3rem;
   font-size: 1rem;
   letter-spacing: 0.01em;
-  width: 100vw;
-  min-width: 100vw;
-  max-width: 100vw;
-  box-sizing: border-box;
+  /* full-bleed across viewport */
   position: relative;
   left: 50%;
-  right: 0;
-  transform: translateX(-50%);
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  box-sizing: border-box;
   border-radius: 0;
 }
 
@@ -83,6 +103,67 @@ footer a:hover {
 }
 
 @media (max-width: 700px) {
+  /* remove body horizontal padding so centering uses full viewport */
+  body {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* keep the hamburger fixed so it doesn't occupy layout width */
+  .nav-toggle {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+  }
+
+  /* ensure contact sections span full width then use internal padding for gutters */
+  .contact-sections {
+    width: 100%;
+    max-width: 400px;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    margin: 2rem auto;
+  }
+
+  /* Force center visually by using calc and transform so it ignores the fixed nav-toggle */
+  .contact-sections {
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative; /* allow left/transform without taking it out of flow */
+    max-width: 400px;
+    width: calc(100% - 2rem);
+  }
+}
+
+.nav-tabs {
+  flex-direction: row;
+  align-items: center;
+  max-height: none;
+  overflow: visible;
+  margin: 2rem 0 3rem 0;
+  width: auto;
+}
+.nav-tabs.open {
+  max-height: none;
+}
+.nav-tabs li {
+  margin: 0 1.5rem;
+  width: auto;
+}
+.nav-tabs a {
+  padding: 1rem 2rem;
+  width: auto;
+  text-align: center;
+}
+.nav-toggle {
+  display: none;
+}
+body.menu-open {
+  overflow-x: hidden;
+}
+
+/* Mobile nav: show burger, collapse menu */
+@media (max-width: 700px) {
   .nav-tabs {
     flex-direction: column;
     align-items: flex-start;
@@ -117,23 +198,212 @@ footer a:hover {
   }
 }
 
-.nav-tabs li {
-  margin: 0 1.5rem;
-}
-.nav-tabs a {
-  display: block;
-  padding: 1rem 2rem;
-  text-decoration: none;
-  color: #333;
-  font-weight: 600;
-  border-radius: 4px;
-  transition: background 0.2s, color 0.2s;
-}
-.nav-tabs a:hover {
-  background: #007bff;
-  color: #fff;
-}
-
 h1 {
   color: green;
+}
+
+/* Contact page sections layout */
+.contact-sections {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 2rem auto;
+  max-width: 900px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.contact-form-section, .contact-info-section {
+  background: #fff;
+  padding: 2rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  flex: 1 1 350px;
+  min-width: 250px;
+}
+.contact-form label {
+  display: block;
+  margin: 1rem 0 0.3rem 0;
+  font-weight: bold;
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+.contact-form button {
+  background: #222;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.contact-form button:hover {
+  background: #444;
+}
+.contact-info-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+  font-size: 1.1rem;
+}
+.contact-info-list li {
+  margin-bottom: 1rem;
+}
+@media (max-width: 800px) {
+  .contact-sections {
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 400px;
+    width: 100%;
+    align-items: center;
+    margin: 0 auto;
+  }
+  .contact-form-section, .contact-info-section {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .contact-form label,
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form button {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+}
+
+/* define UI vars */
+:root {
+  --burger-w: 2.5rem;
+  --center-adjust: 0px; /* tweak this if center needs nudging */
+}
+
+@media (max-width: 700px) {
+  .nav-toggle {
+    width: var(--burger-w);
+    height: calc(var(--burger-w) * 1);
+  }
+
+  /* Force center visually by compensating for half the burger width */
+  .contact-sections {
+    position: relative;
+    left: 50%;
+    transform: translateX(calc(-50% - (var(--burger-w) / 2) + var(--center-adjust)));
+    max-width: 400px;
+    width: calc(100% - 2rem);
+  }
+}
+
+/* Scoped contact-page fixes */
+.contact-page .page-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+.contact-page .contact-sections {
+  position: static;
+  left: auto;
+  transform: none;
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Prevent horizontal overflow on contact page (do not include footer) */
+.contact-page .page-content,
+.contact-page .contact-sections {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Desktop nav link styles */
+@media (min-width: 701px) {
+  .nav-tabs a {
+    background: transparent;
+    color: #222;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s, transform 0.08s;
+    text-decoration: none;
+    box-shadow: none;
+    font-weight: 700;
+  }
+  .nav-tabs a:hover {
+    background: #007bff;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+  .nav-tabs a:focus {
+    outline: 2px solid #0056b3;
+    outline-offset: 2px;
+  }
+  .nav-tabs li + li {
+    margin-left: 1rem;
+  }
+}
+
+/* Mobile nav link styles (improve appearance inside the hamburger menu) */
+@media (max-width: 700px) {
+  .nav-tabs a {
+    display: block; /* ensure full clickable row */
+    color: #222;
+    font-size: 1.05rem;
+    font-weight: 600;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.15s ease, color 0.15s ease, transform 0.08s ease;
+  }
+  .nav-tabs a:hover {
+    background: rgba(0,0,0,0.04);
+    color: #111;
+  }
+  .nav-tabs a:focus {
+    outline: 3px solid rgba(0,123,255,0.25);
+    outline-offset: 2px;
+  }
+  /* mark current/active link if present on mobile */
+  .nav-tabs li.active a,
+  .nav-tabs a.active,
+  .nav-tabs a[aria-current="page"] {
+    background: #007bff;
+    color: #fff;
+  }
+}
+
+/* Desktop improvements: larger tabs and full-fitting active background */
+@media (min-width: 701px) {
+  .nav-tabs a {
+    font-size: 1.08rem; /* slightly larger for desktop */
+    padding: 0.85rem 1.25rem; /* increase padding so background fully covers the tab */
+    display: inline-block; /* allow background to hug the text */
+  }
+  /* Active / current page states */
+  .nav-tabs li.active a,
+  .nav-tabs a.active,
+  .nav-tabs a[aria-current="page"] {
+    background: #007bff;
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(0,123,255,0.12);
+    transform: none;
+  }
 }

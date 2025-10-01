@@ -28,6 +28,9 @@
     const navTabs = document.getElementById('navTabs');
     navToggle.addEventListener('click', () => {
       navTabs.classList.toggle('open');
+      if (window.innerWidth <= 700) {
+        document.body.classList.toggle('menu-open', navTabs.classList.contains('open'));
+      }
     });
     navToggle.addEventListener('keypress', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
