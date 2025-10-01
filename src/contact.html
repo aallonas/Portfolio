@@ -6,7 +6,7 @@
   <title>Contact</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="contact-page">
   <nav>
     <div class="nav-toggle" id="navToggle" aria-label="Open navigation" tabindex="0">
       <span></span>
@@ -23,11 +23,15 @@
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
+  <div class="page-content">
   <script>
     const navToggle = document.getElementById('navToggle');
     const navTabs = document.getElementById('navTabs');
     navToggle.addEventListener('click', () => {
       navTabs.classList.toggle('open');
+      if (window.innerWidth <= 700) {
+        document.body.classList.toggle('menu-open', navTabs.classList.contains('open'));
+      }
     });
     navToggle.addEventListener('keypress', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
@@ -41,7 +45,90 @@
     });
   </script>
   <h1>Contact</h1>
-  <p>This is the Contact page.</p>
+  <div class="contact-sections">
+    <section class="contact-info-section">
+      <h2>Contact Information</h2>
+      <ul class="contact-info-list">
+        <li><strong>Phone:</strong> <a href="tel:+33638404718">+33 6 38 40 47 18</a></li>
+        <li><strong>Email:</strong> <a href="mailto:alexandre.allonas@gmail.com">alexandre.allonas@gmail.com</a></li>
+        <li><strong>GitHub:</strong> <a href="https://github.com/aallonas" target="_blank" rel="noopener noreferrer">github.com/aallonas</a></li>
+        <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/alexandre-allonas-ba664b207" target="_blank" rel="noopener noreferrer">linkedin.com/in/alexandre-allonas-ba664b207</a></li>
+      </ul>
+    </section>
+    <section class="contact-form-section">
+      <h2>Contact Form</h2>
+      <!-- Replace YOUR_FORM_ID with your Formspree form ID (e.g. https://formspree.io/f/xyz123) -->
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/mdkwznal" method="POST">
+        <!-- Honeypot field to deter bots (should remain hidden) -->
+        <input type="text" name="_gotcha" id="_gotcha" style="display:none;" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_subject" value="Website contact form submission">
+
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" required>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+        <button type="submit">Send</button>
+
+        <!-- status area for JS feedback; with non-JS fallback the browser will navigate to Formspree's success page -->
+        <div id="formStatus" class="form-status" role="status" aria-live="polite" style="margin-top:1rem"></div>
+      </form>
+    </section>
+  </div>
+  </div>
+
+  <script>
+    // AJAX submit handler for Formspree with graceful non-JS fallback
+    (function(){
+      const form = document.getElementById('contactForm');
+      if (!form) return;
+      const status = document.getElementById('formStatus');
+
+      form.addEventListener('submit', async (e) => {
+        // If form will be submitted without JS, the browser handles it via action attribute
+        e.preventDefault();
+
+        // basic visual validation handled by 'required' attributes; additional checks can be added here
+        const gotcha = form.querySelector('[name="_gotcha"]').value;
+        if (gotcha) {
+          // likely a bot
+          status.textContent = 'Submission blocked.';
+          return;
+        }
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        status.textContent = 'Sending...';
+
+        try {
+          const formData = new FormData(form);
+          const res = await fetch(form.action, {
+            method: form.method,
+            headers: { 'Accept': 'application/json' },
+            body: formData
+          });
+
+          if (res.ok) {
+            form.reset();
+            status.style.color = 'green';
+            status.textContent = 'Message sent — thank you!';
+          } else {
+            const data = await res.json().catch(() => ({}));
+            status.style.color = 'crimson';
+            status.textContent = data.error || 'There was an error sending your message.';
+          }
+        } catch (err) {
+          status.style.color = 'crimson';
+          status.textContent = 'Network error. Please try again later.';
+        } finally {
+          submitBtn.disabled = false;
+        }
+      });
+    })();
+  </script>
 </body>
 <footer>
   <p>© 2025 Alexandre Allonas &mdash; Mechatronics Engineering Student @ INSA Strasbourg</p>
