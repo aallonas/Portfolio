@@ -43,8 +43,60 @@
       });
     });
   </script>
-  <h1>Resume</h1>
-  <p>This is the Resume page.</p>
+  <section class="resume-viewer">
+    <div class="viewer-controls" style="margin:1rem 0; display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center;">
+      <div class="lang-select" style="display:flex; gap:0.5rem; align-items:center;">
+        <span style="font-weight:600;">Language:</span>
+        <button class="lang-btn button" data-lang="en">English</button>
+        <button class="lang-btn button" data-lang="fr">Français</button>
+        <button class="lang-btn button" data-lang="de">Deutsch</button>
+      </div>
+      <div style="margin-left:auto;">
+        <a id="downloadLink" href="assets/resume-en.pdf" download="Alexandre-Allonas-Resume-en.pdf" class="button">Download PDF</a>
+        <a id="openLink" href="assets/resume-en.pdf" target="_blank" rel="noopener noreferrer" class="button" style="margin-left:0.5rem;">Open in new tab</a>
+      </div>
+    </div>
+    <!-- Embedded PDF viewer (iframe fallback) -->
+    <div class="pdf-embed" style="width:100%;max-width:1000px;margin:0 auto;">
+      <iframe id="resumeIframe" src="assets/resume-en.pdf" title="Resume PDF" style="width:100%;height:80vh;border:1px solid #ddd;" frameborder="0">
+        <p>Your browser does not support PDFs. Download the PDF to view it: <a id="fallbackDownload" href="assets/resume-en.pdf">Download PDF</a>.</p>
+      </iframe>
+    </div>
+  </section>
+
+  <script>
+    // Language switcher for resume PDFs
+    (function(){
+      const buttons = document.querySelectorAll('.lang-btn');
+      const iframe = document.getElementById('resumeIframe');
+      const downloadLink = document.getElementById('downloadLink');
+      const openLink = document.getElementById('openLink');
+      const fallbackDownload = document.getElementById('fallbackDownload');
+      const filenames = {
+        en: 'assets/resume-en.pdf',
+        fr: 'assets/resume-fr.pdf',
+        de: 'assets/resume-de.pdf'
+      };
+
+      function setLang(lang) {
+        const file = filenames[lang] || filenames.en;
+        iframe.src = file;
+        downloadLink.href = file;
+        openLink.href = file;
+        downloadLink.setAttribute('download', `Alexandre-Allonas-Resume-${lang}.pdf`);
+        openLink.setAttribute('href', file);
+        if (fallbackDownload) fallbackDownload.setAttribute('href', file);
+        // update active styles
+        buttons.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+      }
+
+      buttons.forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+
+      // default to English
+      setLang('en');
+    })();
+  </script>
+
 </body>
 <footer>
   <p>© 2025 Alexandre Allonas &mdash; Mechatronics Engineering Student @ INSA Strasbourg</p>
