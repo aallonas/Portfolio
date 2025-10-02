@@ -407,3 +407,23 @@ h1 {
     transform: none;
   }
 }
+
+/* Resume viewer styles */
+.resume-viewer p {
+  color: #444;
+  margin-bottom: 0.5rem;
+}
+.viewer-controls .button {
+  display: inline-block;
+  background: #222;
+  color: #fff;
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+}
+.viewer-controls .button:hover { background: #444; }
+
+@media (max-width: 700px) {
+  .pdf-embed iframe { height: 60vh; }
+}
