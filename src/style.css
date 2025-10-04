@@ -481,3 +481,43 @@ h1 {
     flex: 0 0 64px;
   }
 }
+
+/* Education list styles */
+.education-list {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.education-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.edu-logo {
+  width: 84px;
+  height: 84px;
+  object-fit: contain;
+  border-radius: 6px;
+  background: #fafafa;
+  padding: 8px;
+  flex: 0 0 84px;
+}
+.education-content h3 {
+  margin: 0 0 0.25rem 0;
+}
+.education-content .meta {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 0.6rem;
+}
+@media (max-width: 700px) {
+  .education-item { gap:0.75rem; }
+  .edu-logo { width:64px; height:64px; flex:0 0 64px; }
+}
