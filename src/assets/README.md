@@ -10,6 +10,11 @@ Resume PDFs (multilingual):
 
 The Resume page (`src/resume.html`) will embed and link to these files. The page defaults to English.
 
+Company logos:
+
+- Place company logos referenced on pages in this folder, for example `company1-logo.png` and `company2-logo.png`.
+- Recommended size: provide a square PNG or SVG around 256x256px for best results; the site will display them at ~84x84px.
+
 Notes:
 
 - This folder is intentionally empty in the repo; add your files locally and commit if you want them tracked.
