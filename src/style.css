@@ -258,6 +258,23 @@ h1 {
 .contact-info-list li {
   margin-bottom: 1rem;
 }
+
+/* Social link styles used in contact page */
+.contact-info-list .social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #222;
+  text-decoration: none;
+  font-weight: 600;
+}
+.contact-info-list .social-link svg {
+  color: #111;
+}
+.contact-info-list .social-link:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 800px) {
   .contact-sections {
     flex-direction: column;
@@ -521,3 +538,38 @@ h1 {
   .education-item { gap:0.75rem; }
   .edu-logo { width:64px; height:64px; flex:0 0 64px; }
 }
+
+/* Contact grid/cards */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* force single column (stacked) on desktop) */
+  gap: 1rem;
+  max-width: 1000px;
+  margin: 0 auto 1.5rem auto;
+}
+.contact-card {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  text-align: center;
+}
+.contact-card .card-icon {
+  margin-bottom: 0.6rem;
+  color: #222;
+}
+.card-link {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #222;
+  text-decoration: none;
+  margin-bottom: 0.25rem;
+}
+.card-link:hover { text-decoration: underline; }
+.card-label {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Keep single-column layout across viewports; modify here if you want multi-column on tablets */
