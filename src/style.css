@@ -499,6 +499,20 @@ h1 {
   }
 }
 
+@media (max-width: 800px) {
+  /* When stacked on small screens, keep education items top-aligned for readability */
+  .education-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .edu-logo {
+    width: 64px;
+    height: 64px;
+    flex: 0 0 64px;
+    margin-bottom: 0.5rem;
+  }
+}
+
 /* Education list styles */
 .education-list {
   max-width: 1000px;
@@ -511,7 +525,7 @@ h1 {
 .education-item {
   display: flex;
   gap: 1rem;
-  align-items: flex-start;
+  align-items: center; /* vertically center content next to logo */
   background: #fff;
   padding: 1rem;
   border-radius: 8px;
@@ -534,9 +548,22 @@ h1 {
   font-size: 0.95rem;
   margin-bottom: 0.6rem;
 }
+/* Ensure the content column stacks and centers vertically next to the logo */
+.education-item > .education-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical centering */
+}
 @media (max-width: 700px) {
   .education-item { gap:0.75rem; }
   .edu-logo { width:64px; height:64px; flex:0 0 64px; }
+}
+
+@media (max-width: 800px) {
+  /* on smaller screens when stacked, top-align content */
+  .education-item > .education-content {
+    justify-content: flex-start;
+  }
 }
 
 /* Contact grid/cards */
@@ -572,4 +599,4 @@ h1 {
   color: #666;
 }
 
-/* Keep single-column layout across viewports; modify here if you want multi-column on tablets */
+/* Resume toolbar removed; viewer controls are inline in the HTML */
