@@ -107,13 +107,42 @@ footer a:hover {
   body {
     padding-left: 0;
     padding-right: 0;
+  background: transparent;
+  color: #222;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.08rem;
+  transition: background 0.2s, color 0.2s, transform 0.08s;
+  text-decoration: none;
+  box-shadow: none;
   }
 
   /* keep the hamburger fixed so it doesn't occupy layout width */
   .nav-toggle {
     position: fixed;
+  transform: translateY(-2px);
     top: 1rem;
     left: 1rem;
+/* Contact button styled like header nav button */
+.contact-btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: transparent;
+  color: #222;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.08rem;
+  transition: background 0.2s, color 0.2s, transform 0.08s;
+  text-decoration: none;
+  box-shadow: none;
+  border: none;
+  cursor: pointer;
+}
+.contact-btn:hover {
+  background: #007bff;
+  color: #fff;
+  transform: translateY(-2px);
+}
   }
 
   /* ensure contact sections span full width then use internal padding for gutters */
@@ -600,3 +629,75 @@ h1 {
 }
 
 /* Resume toolbar removed; viewer controls are inline in the HTML */
+
+/* Presentation (profile picture + text) */
+.presentation {
+  display: flex;
+  align-items: left;
+  gap: 1.25rem;
+  /* allow presentation to span wide so image can use vw sizing */
+  max-width: 1200px;
+  margin: 1.5rem auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.presentation .profile-image {
+  /* make image roughly half the viewport width but clamp it for very wide/narrow screens */
+  width: clamp(220px, 48vw, 560px);
+  height: clamp(220px, 48vw, 560px);
+  flex: 0 0 auto; /* fixed visual size coming from width/height */
+  border-radius: 12px; /* use rounded rectangle for large image; change to 50% for circle */
+  object-fit: cover;
+  background: #fafafa;
+  padding: 4px;
+}
+
+
+
+.presentation .profile-text {
+  flex: 1 1 0;
+    text-align: left;
+}
+
+.presentation .intro-text {
+  text-align: left !important;
+}
+
+
+/* Inline image element used in HTML (.profile-pic) */
+.presentation .profile-pic {
+  display: block;
+  /* desktop: target 50% of viewport but clamp to sensible min/max */
+  width: clamp(360px, 50vw, 720px);
+  max-width: 720px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Small screens: stack vertically and center */
+@media (max-width: 700px) {
+  .presentation {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+  }
+  /* on small screens make the image smaller and circular */
+  .presentation .profile-image {
+    width: clamp(96px, 36vw, 160px);
+    height: clamp(96px, 36vw, 160px);
+    flex: 0 0 auto;
+    border-radius: 12px;
+  }
+  .presentation .profile-text { text-align: center; }
+  .presentation .intro-text { text-align: left !important; }
+
+  /* make inline profile image full-width on mobile */
+  .presentation .profile-pic {
+    width: 100%;
+    max-width: none;
+    height: auto;
+    border-radius: 12px; /* keep same shape as desktop */
+  }
+}
