@@ -474,7 +474,8 @@ h1 {
   .pdf-embed iframe { height: 60vh; }
 }
 
-/* Experience list styles */
+/* Experiences Article styles */
+
 .experience-list {
   max-width: 1000px;
   margin: 2rem auto;
@@ -514,6 +515,7 @@ h1 {
 }
 .experience-content ul {
   margin: 0.5rem 0 0 1rem;
+  text-align: left;
 }
 
 @media (max-width: 700px) {
@@ -528,71 +530,74 @@ h1 {
   }
 }
 
-@media (max-width: 800px) {
-  /* When stacked on small screens, keep education items top-aligned for readability */
-  .education-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .edu-logo {
-    width: 64px;
-    height: 64px;
-    flex: 0 0 64px;
-    margin-bottom: 0.5rem;
-  }
-}
+/* Education Article styles */
 
-/* Education list styles */
 .education-list {
   max-width: 1000px;
   margin: 2rem auto;
   padding: 0 1rem;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.5rem;
 }
+
 .education-item {
   display: flex;
   gap: 1rem;
-  align-items: center; /* vertically center content next to logo */
+  align-items: flex-start;
   background: #fff;
   padding: 1rem;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
 }
+
 .edu-logo {
   width: 84px;
   height: 84px;
   object-fit: contain;
-  border-radius: 6px;
+  border-radius: 8px;
   background: #fafafa;
   padding: 8px;
   flex: 0 0 84px;
 }
-.education-content h3 {
+
+.education-content {
+  flex: 1 1 auto;
+}
+
+.education-content .h3 {
   margin: 0 0 0.25rem 0;
 }
+
 .education-content .meta {
   color: #666;
   font-size: 0.95rem;
   margin-bottom: 0.6rem;
 }
+
+.education-content ul {
+  margin: 0.5rem 0 0 1rem;
+}
+
+@media (max-width: 700px) {
+  /* When stacked on small screens, keep education items top-aligned for readability */
+  .education-item {
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+  .edu-logo {
+    width: 64px;
+    height: 64px;
+    flex: 0 0 64px;
+  }
+}
+
+
 /* Ensure the content column stacks and centers vertically next to the logo */
 .education-item > .education-content {
   display: flex;
   flex-direction: column;
   justify-content: center; /* vertical centering */
-}
-@media (max-width: 700px) {
-  .education-item { gap:0.75rem; }
-  .edu-logo { width:64px; height:64px; flex:0 0 64px; }
-}
-
-@media (max-width: 800px) {
-  /* on smaller screens when stacked, top-align content */
-  .education-item > .education-content {
-    justify-content: flex-start;
-  }
 }
 
 /* Contact grid/cards */
