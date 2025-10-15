@@ -43,10 +43,76 @@
       });
     });
   </script>
-  <h1>Projects</h1>
-  <p>This is the Projects page.</p>
+
+<article class="project" role="article" aria-labelledby="project-title-portfolio-site" data-project-id="portfolio-site" itemscope itemtype="https://schema.org/CreativeWork">
+    <header class="project-header">
+      <h2 id="project-title-portfolio-site" class="project-title" itemprop="name">Personal Portfolio Website</h2>
+      <p class="project-meta">
+        <time class="project-date" datetime="2025-10-15" itemprop="datePublished">Oct 2025</time>
+        <span class="project-role" itemprop="author">Developer</span>
+        <span class="project-tags">• <span itemprop="keywords">portfolio, web, accessibility</span></span>
+      </p>
+      <p class="project-summary" itemprop="description">
+        Static, accessible portfolio to showcase projects, experience and resumes.
+        lightweight, responsive, and easy to maintain.
+      </p>
+    </header>
+
+    <figure class="project-media">
+      <img src="assets/pictures/portfolio.png" alt=" screenshot of the portfolio website code editor" itemprop="image" />
+      <figcaption>Website code snippet.</figcaption>
+    </figure>
+
+    <section class="project-details">
+      <h3 class="sr-only">Project details</h3>
+
+      <div class="project-overview">
+        <h4>Overview</h4>
+        <p>Built a small static site (this repository) to present coursework, projects and CV. Focused on semantic HTML, keyboard accessibility and a repeatable article structure so each project can be added quickly or templated for automation.</p>
+      </div>
+
+      <div class="project-features">
+        <h4>Key features / highlights</h4>
+        <ul>
+          <li>Reusable project article template with microdata for SEO</li>
+          <li>Responsive navigation with keyboard support and mobile menu</li>
+          <li>Optimized images and clear alt text for accessibility</li>
+          <li>Simple, single-file pages—easy to deploy (GitHub Pages or static host)</li>
+        </ul>
+      </div>
+
+      <div class="project-tech">
+        <h4>Tech & tools</h4>
+        <ul class="tech-list" aria-label="Technologies used">
+          <li>HTML5, CSS3</li>
+          <li>Vanilla JavaScript (navigation behavior)</li>
+          <li>Git, GitHub (deployment)</li>
+        </ul>
+      </div>
+
+      <div class="project-role">
+        <h4>My role</h4>
+        <p>Designed the layout, implemented responsive markup and navigation scripts, authored content and organized assets. Focused on accessibility and a structure that can be reused for future projects.</p>
+      </div>
+
+      <div class="project-links" aria-label="Project links">
+        <a class="btn btn-primary" href="index.html">Live demo (local)</a>
+        <a class="btn" href="https://github.com/aallonas/portfolio" target="_blank" rel="noopener noreferrer">Source (GitHub)</a>
+        <a class="btn" href="assets/resumes/resume-en.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a>
+      </div>
+    </section>
+
+    <footer class="project-footer" aria-hidden="false">
+      <p class="project-stats">Duration: Ongoing • Team: 1 • Status: Active</p>
+    </footer>
+  </article>
+
+
+
+
+
 </body>
-<footer>
+<footer class="site-footer">
   <p>© 2025 Alexandre Allonas &mdash; Mechatronics Engineering Student @ INSA Strasbourg</p>
   <p>
     <a href="index.html" class="footer-link">

@@ -38,7 +38,8 @@ body {
   color: #333;
 }
 
-footer {
+/* Page footer (scope to .site-footer so article/project footers are not affected) */
+footer.site-footer {
   background: #222;
   color: #eee;
   padding: 2rem 1rem 1.5rem 1rem;
@@ -712,5 +713,207 @@ h1 {
     max-width: none;
     height: auto;
     border-radius: 12px; /* keep same shape as desktop */
+  }
+}
+
+
+
+  /* Project Article style*/
+:root{
+  --bg: #ffffff;
+  --card: #fbfcfe;
+  --muted: #6b7280;
+  --text: #0f1724;
+  --accent: #0a66c2;
+  --accent-600: #0956a8;
+  --radius: 10px;
+  --gap: 1rem;
+  --elevation: 0 6px 18px rgba(12, 20, 30, 0.06);
+}
+
+.project-header { gap: 0.12rem; margin-bottom: 0.25rem; }
+.project-header h2,
+.project-header p { margin: 0; }      /* remove default block margins */
+.project-title { margin-bottom: 0; }  /* ensure no extra space */
+.project-meta { margin-top: 0; padding-top: 0; }
+
+/* Project article base */
+article.project{
+  background: linear-gradient(180deg, var(--card), var(--bg));
+  border: 1px solid rgba(15,23,36,0.06);
+  box-shadow: var(--elevation);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin: 1.5rem auto;
+  max-width: 1000px;
+  color: var(--text);
+  line-height: 1.45;
+  overflow: hidden;
+}
+
+/* Header */
+.project-header{
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+.project-title{
+  font-size: 1.35rem;
+  margin: 0;
+  font-weight: 600;
+}
+.project-meta{
+  font-size: 0.9rem;
+  color: var(--muted);
+  gap: 0.6rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Media */
+.project-media{
+  margin: 0.75rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.project-media img{
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.project-media figcaption{
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.4rem;
+}
+
+/* Summary */
+.project-summary{
+  margin: 0.5rem 0 0.75rem;
+  font-weight: 400;
+}
+
+/* Details layout */
+.project-details{
+  margin-top: 0.5rem;
+  display: grid;
+  gap: 0.75rem;
+}
+.project-details h4{
+  margin: 0 0 0.33rem;
+  font-size: 1rem;
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Key feature list */
+.project-features ul,
+.project-tech ul{
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+/* Tech badges */
+.tech-list{
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.tech-list li{
+  background: rgba(10,102,194,0.08);
+  color: var(--accent-600);
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.85rem;
+}
+
+/* Role & links */
+.project-role p{ margin: 0; color: var(--muted); }
+.project-links{
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 0.6rem;
+}
+
+/* Buttons */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.7rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--accent-600);
+  border: 1px solid rgba(10,102,194,0.12);
+  background: transparent;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+.btn:focus-visible,
+.btn:focus{
+  outline: 3px solid rgba(10,102,194,0.18);
+  outline-offset: 2px;
+}
+.btn:hover{ transform: translateY(-2px); box-shadow: 0 6px 14px rgba(10,102,194,0.06); }
+
+.btn-primary{
+  background: linear-gradient(180deg, var(--accent), var(--accent-600));
+  color: #fff;
+  border: none;
+}
+.btn-primary:hover{ box-shadow: 0 8px 20px rgba(10,102,194,0.18); }
+
+/* Footer stats */
+.project-footer{
+  margin-top: 0.8rem;
+  border-top: 1px dashed rgba(15,23,36,0.04);
+  padding-top: 0.6rem;
+}
+.project-stats{ color: var(--muted); font-size: 0.9rem; margin: 0; }
+
+/* Accessibility helper */
+.sr-only{
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Responsive: two-column layout on wider screens */
+@media (min-width: 880px){
+  article.project{
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    /* make room for header (auto), growing content (1fr) and footer (auto) */
+    grid-template-rows: auto 1fr auto;
+    column-gap: 1.25rem;
+    align-items: start;
+    padding: 1.5rem;
+  }
+  /* make media occupy the sidebar column */
+  .project-media{ grid-column: 2; grid-row: 2; margin: 0; }
+  .project-details{ grid-column: 1; grid-row: 2; }
+  /* ensure project footer spans both columns and sits in the final row */
+  .project-footer{
+    grid-column: 1 / -1;
+    grid-row: 3;
+    align-self: end;
+    background: transparent; /* avoid inheriting the site footer background */
+    padding-top: 0.6rem;
+    border-top: 1px dashed rgba(15,23,36,0.04);
+    margin-top: 0.8rem;
   }
 }
