@@ -459,6 +459,7 @@ h1 {
   color: #444;
   margin-bottom: 0.5rem;
 }
+
 .viewer-controls .button {
   display: inline-block;
   background: #222;
@@ -468,6 +469,7 @@ h1 {
   text-decoration: none;
   font-weight: 600;
 }
+
 .viewer-controls .button:hover { background: #444; }
 
 @media (max-width: 700px) {
@@ -505,13 +507,20 @@ h1 {
 .experience-content {
   flex: 1 1 auto;
 }
+
 .experience-content .role {
-  margin: 0 0 0.25rem 0;
+  margin:  0 0 0.25rem 0;
 }
+
+.experience-content p {
+  text-align: left;
+}
+
 .experience-content .meta {
   color: #666;
   font-size: 0.95rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.1rem;
+  margin-top: 0;
 }
 .experience-content ul {
   margin: 0.5rem 0 0 1rem;
@@ -565,18 +574,25 @@ h1 {
   flex: 1 1 auto;
 }
 
-.education-content .h3 {
+.education-content p {
+  text-align: left;
+}
+
+.education-content .role,
+.education-content h3 {
   margin: 0 0 0.25rem 0;
 }
 
 .education-content .meta {
   color: #666;
   font-size: 0.95rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.1rem;
+  margin-top: 0;
 }
 
 .education-content ul {
   margin: 0.5rem 0 0 1rem;
+    text-align: left;
 }
 
 @media (max-width: 700px) {
@@ -590,14 +606,6 @@ h1 {
     height: 64px;
     flex: 0 0 64px;
   }
-}
-
-
-/* Ensure the content column stacks and centers vertically next to the logo */
-.education-item > .education-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* vertical centering */
 }
 
 /* Contact grid/cards */
