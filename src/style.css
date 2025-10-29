@@ -25,6 +25,29 @@ html {
   vertical-align: middle;
 }
 
+
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* main content grows to push footer down */
+.site-main,
+.presentation,
+.page-content {
+  flex: 1 0 auto;
+}
+
+/* optional: ensure footer doesn't add unexpected space */
+.site-footer {
+  flex-shrink: 0;
+}
+
 @media (max-width: 700px) {
   .footer-link-text {
     display: none;
@@ -33,7 +56,8 @@ html {
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  padding: 5rem;
+  /* keep top/side padding but remove bottom padding so footer can sit flush */
+  padding: 5rem 2rem 0;
   background-color: #f5f5f5;
   color: #333;
 }
@@ -44,16 +68,14 @@ footer.site-footer {
   color: #eee;
   padding: 2rem 1rem 1.5rem 1rem;
   text-align: center;
-  margin-top: 3rem;
+  /* allow flexbox to push footer to the bottom when content is short */
+  margin-top: auto;
   font-size: 1rem;
   letter-spacing: 0.01em;
-  /* full-bleed across viewport */
+  /* keep footer in normal flow to avoid creating its own scroll container
+     (avoid using 100vw + negative margins which can cause horizontal/inner scrollbars) */
   position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  width: 100vw;
+  width: 100%;
   box-sizing: border-box;
   border-radius: 0;
 }
@@ -243,13 +265,24 @@ h1 {
   width: 100%;
   box-sizing: border-box;
 }
-.contact-form-section, .contact-info-section {
+.contact-form-section {
   background: #fff;
   padding: 2rem 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  /* allow the form column to grow and take remaining space */
   flex: 1 1 350px;
   min-width: 250px;
+}
+.contact-info-section {
+  background: #fff;
+  padding: 2rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  /* don't grow to match the form height; size to content */
+  flex: 0 1 320px;
+  min-width: 250px;
+  align-self: flex-start; /* keep it top-aligned */
 }
 .contact-form label {
   display: block;
@@ -738,17 +771,19 @@ h1 {
 .project-meta { margin-top: 0; padding-top: 0; }
 
 /* Project article base */
-article.project{
+article.project {
   background: linear-gradient(180deg, var(--card), var(--bg));
   border: 1px solid rgba(15,23,36,0.06);
   box-shadow: var(--elevation);
   border-radius: var(--radius);
   padding: 1.25rem;
   margin: 1.5rem auto;
-  max-width: 1000px;
+  max-width: 1200px;
+  width: 95%;
   color: var(--text);
   line-height: 1.45;
-  overflow: hidden;
+  overflow: visible;
+  box-sizing: border-box;
 }
 
 /* Header */
@@ -772,15 +807,17 @@ article.project{
 }
 
 /* Media */
-.project-media{
+.project-media {
   margin: 0.75rem 0;
   border-radius: 8px;
+  max-width: 100%;
   overflow: hidden;
 }
-.project-media img{
+.project-media img {
   display: block;
   width: 100%;
   height: auto;
+  max-width: 100%;
   object-fit: cover;
   border-radius: 6px;
 }
@@ -797,10 +834,12 @@ article.project{
 }
 
 /* Details layout */
-.project-details{
+.project-details {
   margin-top: 0.5rem;
   display: grid;
   gap: 0.75rem;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 .project-details h4{
   margin: 0 0 0.33rem;
@@ -810,7 +849,11 @@ article.project{
 }
 
 /* Key feature list */
-.project-features ul,
+.project-features ul{
+  margin: 0;
+  padding-left: 1.2rem;
+  text-align: left;
+}
 .project-tech ul{
   margin: 0;
   padding-left: 1.2rem;
@@ -824,6 +867,7 @@ article.project{
   list-style: none;
   padding: 0;
   margin: 0;
+  justify-content: center;
 }
 .tech-list li{
   background: rgba(10,102,194,0.08);
@@ -840,6 +884,7 @@ article.project{
   gap: 0.6rem;
   flex-wrap: wrap;
   margin-top: 0.6rem;
+  justify-content: center;
 }
 
 /* Buttons */
@@ -893,8 +938,8 @@ article.project{
 }
 
 /* Responsive: two-column layout on wider screens */
-@media (min-width: 880px){
-  article.project{
+@media (min-width: 880px) {
+  article.project {
     display: grid;
     grid-template-columns: 1fr 320px;
     /* make room for header (auto), growing content (1fr) and footer (auto) */
@@ -903,6 +948,18 @@ article.project{
     align-items: start;
     padding: 1.5rem;
   }
+}
+
+@media (max-width: 880px) {
+  article.project {
+    padding: 1rem;
+    width: 92%;
+  }
+  
+  .project-media {
+    margin: 0.5rem 0;
+  }
+}
   /* make media occupy the sidebar column */
   .project-media{ grid-column: 2; grid-row: 2; margin: 0; }
   .project-details{ grid-column: 1; grid-row: 2; }
@@ -916,4 +973,3 @@ article.project{
     border-top: 1px dashed rgba(15,23,36,0.04);
     margin-top: 0.8rem;
   }
-}
