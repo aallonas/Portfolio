@@ -72,10 +72,13 @@ footer.site-footer {
   margin-top: auto;
   font-size: 1rem;
   letter-spacing: 0.01em;
-  /* keep footer in normal flow to avoid creating its own scroll container
-     (avoid using 100vw + negative margins which can cause horizontal/inner scrollbars) */
+  /* Full-bleed footer across the viewport while remaining in normal flow */
   position: relative;
-  width: 100%;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
   box-sizing: border-box;
   border-radius: 0;
 }
@@ -973,3 +976,23 @@ article.project {
     border-top: 1px dashed rgba(15,23,36,0.04);
     margin-top: 0.8rem;
   }
+
+
+.about-section {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  text-align: center;
+  background: #fff;
+  padding: 2rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  flex: 0 1 320px;
+}
+
+.about-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
