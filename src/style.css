@@ -18,12 +18,6 @@ html {
   }
 }
 
-/* Footer icon/text responsive styles */
-.footer-link-text {
-  display: inline;
-  margin-left: 0.4em;
-  vertical-align: middle;
-}
 
 
 html, body {
@@ -43,53 +37,24 @@ body {
   flex: 1 0 auto;
 }
 
-/* optional: ensure footer doesn't add unexpected space */
-.site-footer {
-  flex-shrink: 0;
-}
+
 
 @media (max-width: 700px) {
   .footer-link-text {
     display: none;
   }
 }
+
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  /* keep top/side padding but remove bottom padding so footer can sit flush */
-  padding: 5rem 2rem 0;
+  padding: 0 2rem 0;
   background-color: #f5f5f5;
   color: #333;
 }
 
-/* Page footer (scope to .site-footer so article/project footers are not affected) */
-footer.site-footer {
-  background: #222;
-  color: #eee;
-  padding: 2rem 1rem 1.5rem 1rem;
-  text-align: center;
-  /* allow flexbox to push footer to the bottom when content is short */
-  margin-top: auto;
-  font-size: 1rem;
-  letter-spacing: 0.01em;
-  /* Full-bleed footer across the viewport while remaining in normal flow */
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  width: 100vw;
-  box-sizing: border-box;
-  border-radius: 0;
-}
-
-footer a {
-  text-decoration: none;
-  color: #eee;
-}
-
-footer a:hover {
-  color: #fff;
+.nav-bar {
+  margin: 0 2rem 2rem;
 }
 
 .nav-tabs {
@@ -195,7 +160,7 @@ footer a:hover {
   align-items: center;
   max-height: none;
   overflow: visible;
-  margin: 2rem 0 3rem 0;
+  margin: 0 0 0 0;
   width: auto;
 }
 .nav-tabs.open {
@@ -862,6 +827,22 @@ article.project {
   padding-left: 1.2rem;
 }
 
+.project-footer{
+  margin-top: 0.8rem;
+  border-top: 1px dashed rgba(15,23,36,0.04);
+  padding-top: 0.6rem;
+}
+.project-footer{
+  grid-column: 1 / -1;
+  grid-row: 3;
+  align-self: end;
+  background: transparent; /* avoid inheriting the site footer background */
+  padding-top: 0.6rem;
+  border-top: 1px dashed rgba(15,23,36,0.04);
+  margin-top: 0.8rem;
+}
+
+
 /* Tech badges */
 .tech-list{
   display: flex;
@@ -919,12 +900,6 @@ article.project {
 }
 .btn-primary:hover{ box-shadow: 0 8px 20px rgba(10,102,194,0.18); }
 
-/* Footer stats */
-.project-footer{
-  margin-top: 0.8rem;
-  border-top: 1px dashed rgba(15,23,36,0.04);
-  padding-top: 0.6rem;
-}
 .project-stats{ color: var(--muted); font-size: 0.9rem; margin: 0; }
 
 /* Accessibility helper */
@@ -966,16 +941,6 @@ article.project {
   /* make media occupy the sidebar column */
   .project-media{ grid-column: 2; grid-row: 2; margin: 0; }
   .project-details{ grid-column: 1; grid-row: 2; }
-  /* ensure project footer spans both columns and sits in the final row */
-  .project-footer{
-    grid-column: 1 / -1;
-    grid-row: 3;
-    align-self: end;
-    background: transparent; /* avoid inheriting the site footer background */
-    padding-top: 0.6rem;
-    border-top: 1px dashed rgba(15,23,36,0.04);
-    margin-top: 0.8rem;
-  }
 
 
 .about-section {
@@ -995,4 +960,99 @@ article.project {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
   color: #222;
+}
+
+/* Site header section content */
+
+.site-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0 1rem;
+  min-height: 160px;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 2rem 2rem 2rem 10rem;
+}
+
+.site-header-text {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: min(100%, 42rem);
+}
+
+.site-header-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+  color: #222;
+}
+
+.site-header-subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+.site-header-profile-picture {
+  position: absolute;
+  right: 4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+@media (max-width: 700px) {
+  .site-header {
+    display: block;
+    min-height: auto;
+    padding: 2rem 1rem;
+  }
+
+  .site-header-text {
+    max-width: 100%;
+  }
+
+  .site-header-profile-picture {
+    position: static;
+    transform: none;
+    display: block;
+    margin: 1rem auto 0;
+  }
+}
+
+/* Site footer section content */
+
+.site-footer {
+  background: #222;
+  color: #eee;
+  padding: 2rem 1rem 1.5rem 1rem;
+  text-align: center;
+  margin-top: auto;
+  font-size: 1rem;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  box-sizing: border-box;
+  border-radius: 0;
+}
+
+.site-footer a {
+  text-decoration: none;
+  color: #eee;
 }

@@ -7,7 +7,16 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <nav>
+  <div class="site-header">
+    <div class="site-header-text">
+      <p class="site-header-title">Alexandre Allonas</p>
+      <span class="site-header-subtitle">Mechatronics Engineering Student @ INSA Strasbourg</span>
+    </div>
+    <a href="index.html">
+      <img class="site-header-profile-picture" src="assets/pictures/pp.jpg" alt="Profile picture of Alexandre Allonas">
+    </a>
+  </div>
+  <nav class="nav-bar">
     <div class="nav-toggle" id="navToggle" aria-label="Open navigation" tabindex="0">
       <span></span>
       <span></span>
@@ -46,7 +55,7 @@
 
   <article class="project" role="article" aria-labelledby="project-title-portfolio-site" data-project-id="portfolio-site" itemscope itemtype="https://schema.org/CreativeWork">
     <header class="project-header">
-      <h2 id="project-title-portfolio-site" class="project-title" itemprop="name">VTOL Drone</h2>
+      <h2 id="project-title-portfolio-site" class="project-title" itemprop="name">Quadplane VTOL Drone</h2>
       <p class="project-meta">
         <time class="project-date" datetime="2025-10-15" itemprop="datePublished">Jan 2024 - Feb 2026</time>
         <span class="project-role" itemprop="author">• Designer</span>
@@ -71,7 +80,8 @@
           Design and production of a VTOL drone that switches between quadcopter and fixed-wing modes. 
           Take-off and landing are handled vertically to broaden their location possibilities, 
           once airborne it transitions to plane mode for a more efficient cruise, higher speeds and extended range.
-          The first test flight is scheduled for december 2025.
+          First flight was successfully completed in February 2026.
+          All of it's specifications were validated during it's second test flight in july of 2026.
         </p>
       </div>
 
@@ -110,7 +120,7 @@
       </div>
     </section>
     <footer class="project-footer" aria-hidden="false">
-      <p class="project-stats">Duration: 2 years • Team: 10 • Status: Active</p>
+      <p class="project-stats">Duration: 2 years • Team: 10 • Status: Finished</p>
     </footer>
   </article>
 
