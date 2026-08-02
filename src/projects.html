@@ -90,7 +90,8 @@
         <ul>
           <li>3m Wingspan</li>
           <li>500g Payload</li>
-          <li>4.1kg total weight</li>
+          <li>4.1kg AUW (all-up weight)</li>
+          <li>30 minute flight time</li>
         </ul>
       </div>
 
@@ -98,10 +99,16 @@
         <h4>Tech & tools</h4>
         <ul class="tech-list" aria-label="Technologies used">
           <li>PTC Creo</li>
-          <li>3D Printing</li>
-          <li>Carbon fiber</li>
+          <li>Carbon Fiber</li>
           <li>Pixhawk</li>
           <li>Composite Design</li>
+          <li>Ardupilot</li>
+          <li>Mission Planner</li>
+          <li>XFLR5</li>
+          <li>3D Printing</li>
+          <li>Composite Mold Design</li>
+          <li>Mavlink</li>
+          <li>Composite Structural Analysis</li>
         </ul>
       </div>
 
@@ -113,10 +120,10 @@
         </p>
       </div>
 
-      <div class="project-links" aria-label="Project links">
-        <!--<a class="btn btn-primary" href="https://youtu.be/p3VMUb1bDCs">Details</a> -->
+      <div class="project-links" aria-label="Project links"> 
         <a class="btn" href="https://youtu.be/p3VMUb1bDCs" target="_blank" rel="noopener noreferrer">First flight video</a>
         <!--<a class="btn" href="assets/resumes/resume-en.pdf" target="_blank" rel="noopener noreferrer">Scool article</a>-->
+        <a class="btn btn-primary" href="https://youtu.be/p3VMUb1bDCs">More About</a>
       </div>
     </section>
     <footer class="project-footer" aria-hidden="false">
@@ -126,20 +133,20 @@
 
   <article class="project" role="article" aria-labelledby="project-title-portfolio-site" data-project-id="portfolio-site" itemscope itemtype="https://schema.org/CreativeWork">
     <header class="project-header">
-      <h2 id="project-title-portfolio-site" class="project-title" itemprop="name">Tic-tac-toe Robot Opponent</h2>
+      <h2 id="project-title-portfolio-site" class="project-title" itemprop="name">Differential Drive Mobile Robot</h2>
       <p class="project-meta">
-        <time class="project-date" datetime="2025-10-15" itemprop="datePublished">Fall Semester 2025</time>
-        <span class="project-role" itemprop="author">• Developer</span>
-        <span class="project-tags">• <span itemprop="keywords">Robotics, ROS2, Computer Vision</span></span>
+        <time class="project-date" datetime="2025-10-15" itemprop="datePublished">Spring 2026</time>
+        <span class="project-role" itemprop="author">• Engineer</span>
+        <span class="project-tags">• <span itemprop="keywords">Robotics, ROS2, Real Time</span></span>
       </p>
       <p class="project-summary" itemprop="description">
-        Tic tac toe Robot using an OpenMANIPULATOR-X robot arm as part of the "Motorisation et commande d'axe pour la robotique" course @ INSA Strasbourg. 
+        A differential drive mobile robot designed for autonomous navigation and obstacle avoidance.
       </p>
     </header>
 
     <figure class="project-media">
-      <img src="assets/pictures/OpenManipulator-X_CAD.png" alt=" screenshot of the portfolio website code editor" itemprop="image" />
-      <figcaption>OpenMANIPULATOR-X CAD assembly</figcaption>
+      <img src="assets/pictures/PCB.png" alt=" sGerber file of the Dual Motor and Encoder driver" itemprop="image" />
+      <figcaption>Dual Motor and Encoder driver PCB</figcaption>
     </figure>
 
     <section class="project-details">
@@ -148,40 +155,55 @@
       <div class="project-overview">
         <h4>Overview</h4>
         <p>
-          Created a ROS2 package enabling players to physically play Tic-Tac-Toe against an AI, whose moves are detected and executed by an OpenMANIPULATOR-X robot arm equipped with a camera.</p>
+          Differential drive mobile robot designed for autonomous navigation and obstacle avoidance using ROS2.
+          The robot follows a two layer philosophy: the first, a lower layer comprised of a custom designed PCB 
+          handles low level control and perception whilst the second made of a raspberry pi manages more computationally 
+          heavy higher level functions. The robot is designed to be compact and efficient, whilst using well known hardware 
+          and software to focus on maintainability.
+        </p>
       </div>
 
       <div class="project-features">
         <h4>Key features / highlights</h4>
         <ul>
-          <li>Move and game state detection</li>
-          <li>Robotic move execution</li>
+          <li>Encoder based odometry</li>
+          <li>Autonomous navigation using the NAV2 stack</li>
+          <li>Interruption and timing Management</li>
+          <li>Compact size</li>
+
         </ul>
       </div>
 
       <div class="project-tech">
         <h4>Tech & tools</h4>
         <ul class="tech-list" aria-label="Technologies used">
-          <li>ROS2 Humble</li>
+          <li>ROS2 Jazzy</li>
+          <li>Gazebo</li>
+          <li>3D Printing</li>
+          <li>Arduino IDE</li>
+          <li>C/C++</li>
           <li>Python</li>
           <li>OpenCV</li>
           <li>Raspberry Pi</li>
+          <li>Proteus</li>
+          <li>JLC PCB</li>
+          <li>ATMEGA328P</li>
         </ul>
       </div>
 
       <div class="project-role">
         <h4>My role</h4>
-        <p>Designed and coded the website in it's entirety, enabled deployment via GitHub Actions and wrote-created the entire content. </p>
+        <p>Designed the overall architecture and implemented the core functionality of the robot's control system.</p>
       </div>
 
       <div class="project-links" aria-label="Project links">
         <!--<a class="btn btn-primary" href="index.html">Live demo (local)</a>-->
-        <a class="btn" href="https://github.com/aallonas/open_manipulator_tictactoe" target="_blank" rel="noopener noreferrer">Source Code(GitHub)</a>
+        <!--<a class="btn" href="https://github.com/aallonas/open_manipulator_tictactoe" target="_blank" rel="noopener noreferrer">Source Code(GitHub)</a>-->
       </div>
     </section>
 
     <footer class="project-footer" aria-hidden="false">
-      <p class="project-stats">Duration: 3 months • Team: 3  • Status: Active</p>
+      <p class="project-stats">Duration: 4 months • Team: 1  • Status: Active</p>
     </footer>
   </article>
 
@@ -209,7 +231,12 @@
 
       <div class="project-overview">
         <h4>Overview</h4>
-        <p>Built a small static site (this repository) to present coursework, projects and CV. Focused on semantic HTML, keyboard accessibility and a repeatable article structure so each project can be added quickly or templated for automation.</p>
+        <p>
+          Static portfolio website built to showcase my projects and serve as an extension to my resume hosted on my own domain.
+          It allows visitors to learn more about me, my work, various projects, experiences and how to get in touch with me.
+          The website is designed to be simple, clear and easy to maintain using modern web technologies such as HTML, CSS, and JavaScript.
+          And depending on it's advancement focus on accessibility and usability across all devices (computer and smartphone).
+        </p>
       </div>
 
       <div class="project-features">
@@ -217,6 +244,7 @@
         <ul>
           <li>Reusable templates across the entire site</li>
           <li>Multiple media management (computers, smartphone ...)</li>
+          <li>Continuous integration workflow</li>
           <li>FTP deployment to OVHcloud servers</li>
         </ul>
       </div>
@@ -224,19 +252,23 @@
       <div class="project-tech">
         <h4>Tech & tools</h4>
         <ul class="tech-list" aria-label="Technologies used">
-          <li>HTML5, CSS3</li>
-          <li>Git, GitHub Actions</li>
+          <li>HTML5</li>
+          <li>CSS3</li>
+          <li>JavaScript</li>
+          <li>Git</li>
+          <li>GitHub Actions</li>
           <li>OVHcloud</li>
         </ul>
       </div>
 
       <div class="project-role">
         <h4>My role</h4>
-        <p>Designed and coded the website in it's entirety, enabled deployment via GitHub Actions and wrote-created the entire content. </p>
+        <p>Designed the overall architecture and implemented the core functionality of the robot's control system.</p>
       </div>
 
       <div class="project-links" aria-label="Project links">
-        <a class="btn" href="https://github.com/aallonas/portfolio" target="_blank" rel="noopener noreferrer">Source Code(GitHub)</a>
+        <a class="btn" href="https://alexandre-allonas.fr" target="_blank" rel="noopener noreferrer">Website Link</a>
+        <a class="btn btn-primary" href="https://github.com/aallonas/portfolio" target="_blank" rel="noopener noreferrer">Source Code(GitHub)</a>
       </div>
     </section>
 

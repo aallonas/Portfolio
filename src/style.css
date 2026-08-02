@@ -55,6 +55,10 @@ body {
 
 .nav-bar {
   margin: 0 2rem 2rem;
+  max-width: 1400px;
+  min-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .nav-tabs {
@@ -62,11 +66,11 @@ body {
   justify-content: center;
   list-style: none;
   padding: 0;
-  margin: 2rem 0 3rem 0;
+  margin: 0 0 0 0;
   background: #fff;
-  border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   transition: max-height 0.3s ease;
+  border-radius: 1rem;
 }
 
 /* Hamburger styles */
@@ -160,7 +164,6 @@ body {
   align-items: center;
   max-height: none;
   overflow: visible;
-  margin: 0 0 0 0;
   width: auto;
 }
 .nav-tabs.open {
@@ -756,10 +759,11 @@ article.project {
 
 /* Header */
 .project-header{
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 2rem;
 }
 .project-title{
   font-size: 1.35rem;
@@ -772,6 +776,15 @@ article.project {
   gap: 0.6rem;
   align-items: center;
   flex-wrap: wrap;
+}
+
+/* Center project header inside project article */
+article.project .project-header {
+  align-items: center;
+  text-align: center;
+  justify-self: center;
+  width: auto;
+  max-width: 900px;
 }
 
 /* Media */
@@ -818,9 +831,20 @@ article.project {
 
 /* Key feature list */
 .project-features ul{
+
   margin: 0;
   padding-left: 1.2rem;
   text-align: left;
+}
+.project-features li { break-inside: avoid; }
+
+@media (min-width: 880px) {
+  /* show features list in two columns on wide screens */
+  .project-features ul {
+    column-count: 2;
+    column-gap: 1.25rem;
+  }
+  .project-features li { break-inside: avoid-column; }
 }
 .project-tech ul{
   margin: 0;
@@ -828,18 +852,16 @@ article.project {
 }
 
 .project-footer{
-  margin-top: 0.8rem;
+  margin-top: 0rem;
   border-top: 1px dashed rgba(15,23,36,0.04);
-  padding-top: 0.6rem;
+  padding-top: 0rem;
 }
 .project-footer{
   grid-column: 1 / -1;
-  grid-row: 3;
+  grid-row: 100;
   align-self: end;
   background: transparent; /* avoid inheriting the site footer background */
-  padding-top: 0.6rem;
   border-top: 1px dashed rgba(15,23,36,0.04);
-  margin-top: 0.8rem;
 }
 
 
@@ -862,7 +884,7 @@ article.project {
 }
 
 /* Role & links */
-.project-role p{ margin: 0; color: var(--muted); }
+.project-role p{ margin: 0 2rem; color: var(--muted); }
 .project-links{
   display: flex;
   gap: 0.6rem;
@@ -880,7 +902,7 @@ article.project {
   border-radius: 8px;
   text-decoration: none;
   color: var(--accent-600);
-  border: 1px solid rgba(10,102,194,0.12);
+  border: 2px solid rgba(10,102,194,0.18);
   background: transparent;
   font-weight: 600;
   font-size: 0.9rem;
@@ -924,8 +946,28 @@ article.project {
     grid-template-rows: auto 1fr auto;
     column-gap: 1.25rem;
     align-items: start;
-    padding: 1.5rem;
+    padding: 2rem;
   }
+  /* place header across both columns in the grid layout */
+  article.project .project-header {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+  /* allow detail children to participate in the article grid so they can span columns */
+  article.project .project-details {
+    display: contents;
+  }
+  /* make these detail blocks span both columns and be centered */
+  article.project .project-details .project-tech,
+  article.project .project-details .project-role,
+  article.project .project-details .project-links {
+    grid-column: 1 / -1;
+    justify-self: center;
+    text-align: center;
+    max-width: 720px;
+    margin: 1rem auto;
+  }
+
 }
 
 @media (max-width: 880px) {
@@ -969,13 +1011,13 @@ article.project {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 1rem 0 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   min-height: 160px;
   width: 100vw;
-  margin-left: calc(50% - 50vw);
   overflow: hidden;
   box-sizing: border-box;
-  padding: 2rem 2rem 2rem 10rem;
+  padding: 2rem 2rem 2rem 2rem;
 }
 
 .site-header-text {
@@ -1004,7 +1046,7 @@ article.project {
 
 .site-header-profile-picture {
   position: absolute;
-  right: 4rem;
+  right: 6rem;
   top: 50%;
   transform: translateY(-50%);
   width: 140px;
